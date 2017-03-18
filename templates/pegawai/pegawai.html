@@ -1,0 +1,79 @@
+
+<style>
+.demo-updates > .mdl-card__menu {
+  color: #fff;
+}
+</style>
+
+
+<div class="mdl-grid demo-content" ng-init="changejud('Data Semua Pegawai');">
+
+          <div ng-if="listPegawai[0] == null " id="loadiing">
+           <i  class="material-icons" style="font-size:1000%;">desktop_windows</i>
+           <p style="text-align:center;">Data Pegawai Kosong</p>
+         </div>
+    
+          <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet" ng-repeat="pegawai in listPegawai | filter:search | startFrom:currentPage*pageSize | limitTo:pageSize" >
+
+              <a class="item item-thumbnail-left" href="#/dash/pegawai/detail" ng-click="tampungdetail(pegawai,4);changejud('Detail Pegawai')" >
+                <img  ng-src="{{pegawai.photo || 'img/pegawai.png'}}">
+                <h2 class="foroverflow">{{pegawai.nama}}</h2>
+                <p class="foroverflow">{{pegawai.alamat}}</p>
+                <p class="foroverflow">{{pegawai.nomor_telp || pegawai.email}}</p>
+              </a>
+              
+          </div>
+     
+        
+ </div>
+
+  <div ng-if="listPegawai[0] != null && !showsnackbar && getData3().length >=15" class="button-pag">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" ng-disabled="currentPage == 0" ng-click="prev()">
+          sebelumnya
+        </button>
+         <span class="pag-span">Halaman {{currentPage+1}} dari {{numberOfPages3()}}</span>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" ng-click="nexti()" ng-disabled="currentPage >= getData3().length/pageSize - 1">
+          berikutnya
+        </button>
+  </div>
+
+ <div class="floating " ng-if="!showsnackbar" >
+    <div class="mdl-tooltip" for="tambahdok">
+                Tambah Pegawai
+     </div>
+       <div class="mdl-tooltip" for="exportdata">
+                Export Data
+     </div>
+
+   <button  id="tambahdok" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" ng-click="showDialog('tambahpegawai')">
+  <i class="material-icons" id="tambahdok">add</i>
+  </button>
+    </button>
+    <button  id="exportdata" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect "  ng-click="exporttocsv(6)">
+  <i class="material-icons" id="exportdata">import_export</i>
+  </button>
+ </div>
+
+ <table id="tablepegawai"  ng-if="showTbl" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp table" style="width:100%;opacity:0" >
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">No</th>
+      <th class="mdl-data-table__cell--non-numeric">Nama</th>
+      <th class="mdl-data-table__cell--non-numeric">Alamat Lengkap</th>
+      <th class="mdl-data-table__cell--non-numeric">Nomor Telepon</th>
+      <th class="mdl-data-table__cell--non-numeric">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="pegawai in listPegawai">
+      <td class="mdl-data-table__cell--non-numeric" >{{$index+1}} </td>
+        <td class="mdl-data-table__cell--non-numeric">{{pegawai.nama}}</td>
+     
+      <td class="mdl-data-table__cell--non-numeric">{{pegawai.alamat}}</td>
+      <td class="mdl-data-table__cell--non-numeric">{{pegawai.nomor_telp}}</td>
+       <td class="mdl-data-table__cell--non-numeric">{{pegawai.email}}</td>
+    </tr>
+    
+  </tbody>
+</table>
+ 

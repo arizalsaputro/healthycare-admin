@@ -1,0 +1,68 @@
+ <div ng-if="listLaporan[0] == null && showsnackbar" id="loadiing" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+<div ng-if="listLaporan[0] == null && !showsnackbar" class="mdl-grid demo-content">
+<div  id="loadiing">
+ <i  class="material-icons" style="font-size:1000%;">desktop_windows</i>
+ <p style="text-align:center;">Data Laporan Kosong</p>
+</div>
+</div>
+<table ng-if="listLaporan[0] != null" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp table opacityanimate" style="width:100%;" ng-init="changejud('Data Semua Laporan Masalah')">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Tanggal</th>
+      <th class="mdl-data-table__cell--non-numeric">Pengirim</th>
+      <th class="mdl-data-table__cell--non-numeric">Item Bermasalah</th>
+      <th class="mdl-data-table__cell--non-numeric">Deskripsi</th>
+         <th class="mdl-data-table__cell--non-numeric"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="laporan in listLaporan">
+      <td class="mdl-data-table__cell--non-numeric" ng-init="tgl=getTangal(laporan.tanggal)">{{tgl | date:'longDate'}} </td>
+      <td class="mdl-data-table__cell--non-numeric" ng-init="sender=getSender(laporan.pengirim)"><a href="#/dash/pasien/detail" ng-click="tampungdetail(sender,1)">{{sender.profile.nama}}</a></td>
+      <td class="mdl-data-table__cell--non-numeric">{{laporan.item}}</td>
+      <td class="mdl-data-table__cell--non-numeric">{{laporan.desc}}</td>
+      <td class="mdl-data-table__cell--non-numeric">
+        <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored" id="hapuslap" ng-click="hapuslaporan(laporan)">
+          <i class="material-icons">delete</i>
+        </button>
+         <div class="mdl-tooltip" for="hapuslap" >
+               Hapus laporan
+         </div>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+ <div class="floating " ng-if="!showsnackbar">
+        <div class="mdl-tooltip" for="exportdata">
+                Export Data
+     </div>
+
+    <button  id="exportdata" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect " ng-click="exporttocsv(1)" >
+     <i class="material-icons" id="exportdata">import_export</i>
+  </button>
+  
+ </div>
+
+ <table id="tablelaporan"  ng-if="showTbl" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp table" style="width:100%;" >
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">No</th>
+      <th class="mdl-data-table__cell--non-numeric">Tanggal</th>
+      <th class="mdl-data-table__cell--non-numeric">Pengirim</th>
+      <th class="mdl-data-table__cell--non-numeric">Item Bermasalah</th>
+      <th class="mdl-data-table__cell--non-numeric">Deskripsi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="laporan in listLaporan">
+      <td class="mdl-data-table__cell--non-numeric" >{{$index+1}} </td>
+      <td class="mdl-data-table__cell--non-numeric" ng-init="tgl=getTangal(laporan.tanggal)">{{tgl | date:'longDate'}} </td>
+      <td class="mdl-data-table__cell--non-numeric" ng-init="sender=getSender(laporan.pengirim)"><a href="#/dash/pasien/detail" ng-click="tampungdetail(sender,1)">{{sender.profile.nama}}</a></td>
+      <td class="mdl-data-table__cell--non-numeric">{{laporan.item}}</td>
+      <td class="mdl-data-table__cell--non-numeric">{{laporan.desc}}</td>
+    </tr>
+    
+  </tbody>
+</table>

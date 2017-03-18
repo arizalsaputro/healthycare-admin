@@ -1,0 +1,81 @@
+
+
+<div id="content" ng-init="changejud('Detail Dokter');setsearchnull();numron=getRandomNum();" ng-class="{'bgklinik1':numron==1,'bgklinik2':numron==2,'bgklinik3':numron==3,'bgklinik4':numron==4,'bgklinik5':numron==5,'bgklinik6':numron==6,'bgklinik7':numron==7,'bgklinik8':numron==8,'bgklinik9':numron==9,'bgklinik10':numron==10}">
+        <div id="profile-info">
+        
+          <img  id="profile-image"  ng-src="{{tampungdokter.photo || 'img/doctor-flat.png'}}" ng-click="openimageprofile(tampungdokter.nama,tampungdokter.photo)" style="cursor:pointer;">
+          
+
+          <h5 id="profile-name" ng-if="tampungdokter.spesialis != 'Dokter Gigi'">dr. {{tampungdokter.nama}}</h5>
+          <h5 id="profile-name" ng-if="tampungdokter.spesialis == 'Dokter Gigi'">drg. {{tampungdokter.nama}}</h5>
+         
+          <p id="profile-name2" ng-if="tampungdokter.kelamin == 'P'">Perempuan</p>
+         <p id="profile-name2" ng-if="tampungdokter.kelamin == 'L'">Laki - Laki</p>
+          <p ng-if="tampungdokter.alamat" id="profile-name3">{{tampungdokter.alamat}}</p>
+          <p ng-if="tampungdokter.spesialis" id="profile-name3">{{tampungdokter.spesialis}}</p>
+          <p ng-if="tampungdokter.nomor_telp" id="profile-name3">{{tampungdokter.nomor_telp}}</p>
+          <p id="profile-name3">{{tampungdokter.email}}</p>
+       
+
+        </div>
+         <div class="mdl-card__menu">
+                   <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="detaildokter">
+                   <i class="material-icons" style="color:white" >more_vert</i>
+                </button>
+                <div class="mdl-tooltip" for="detaildokter">
+                Opsi
+                </div>
+                <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="detaildokter">
+                    
+                   <li class="mdl-menu__item" ng-click="showUbahprofile(tampungdokter,2)">Ubah Data Dokter</li>
+                     <li class="mdl-menu__item" ng-click="showAturjadwalpraktek(tampungdokter.listjadwal)">Atur Jadwal Dokter</li>
+                  <li class="mdl-menu__item" ng-click="showDialog('ubahemaildokter')">Ubah Email</li>
+                  <li class="mdl-menu__item" ng-click="showpaspasien(2)">Lihat Password</li>
+                  <li class="mdl-menu__item" ng-click="showDialog('ubahpassworddokter')">Ubah Password</li>
+                   <li class="mdl-menu__item" ng-click="resetpass(tampungdokter.email)">Reset Password</li>
+                  <li class="mdl-menu__item" ng-click="showDialog('hapusdokter')">Hapus Dokter</li>
+                  <li class="mdl-menu__item" ng-click="openresetanalitik(tampungdokter,1)">Reset Analitik</li>
+                </ul>
+         </div>
+</div>
+<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect opacityanimate">
+  <div class="mdl-tabs__tab-bar">
+       <a href="#jadwal-panel" class="mdl-tabs__tab is-active">Jadwal praktek</a>
+       <a href="#analytics" class="mdl-tabs__tab " ng-click="getGrapic()">Analitics</a>
+  </div>
+
+    <div class="mdl-tabs__panel is-active" id="jadwal-panel">
+      <div class="mdl-grid demo-content" >
+           
+              <div class="list mdl-cell mdl-cell--3-col " ng-repeat="day in tampungdokter.listjadwal" >
+
+              <a class="item " href="" ng-click="" ng-class="{'backcolored' : day.start&&day.end}">
+                <h2 style="margin:auto;font-size:20px;text-align: center;" ng-init="indoday=getindoday(day.hari)">{{indoday}}</h2>
+                <p style="margin:auto;text-align: center;">{{day.start | date: "HH:mm" }} - {{day.end | date: "HH:mm"}}</p>
+              </a>
+              
+             </div>  
+      </div>
+  </div>
+    <div class="mdl-tabs__panel" id="analytics">
+      <div class="mdl-grid demo-content" >
+          <div class="demo-graphs  mdl-color--white mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet" style="border: 1px solid #e1e8ed;">
+           <h5>Pasien Ditanggani</h5>
+              <canvas id="line" class="chart chart-line" chart-data="data1"
+              chart-labels="labels" chart-legend="false" >
+            </canvas> 
+
+          </div>
+      </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+

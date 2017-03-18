@@ -1,0 +1,51 @@
+<div class="mdl-grid demo-content" ng-init="changejud('Pendapatan')">    
+           <div class="demo-graphs  mdl-color--white mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet" style="border: 1px solid #e1e8ed;" id="line1">
+           <h5>Diagram Pendapatan
+           </h5> 
+           
+           <canvas id="bar1" class="chart chart-bar"
+            chart-data="data4" chart-labels="labels" >
+          </canvas>
+
+          </div>         
+
+           <div class="demo-graphs  mdl-color--white mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet" style="border: 1px solid #e1e8ed;" id="line1">
+           <h5>Tabel pendapatan
+           </h5> 
+               <table class="mdl-data-table mdl-js-data-table  table_rekam_medik table" style="border:none;">
+                <thead>
+                  <tr>
+                    <th class="mdl-data-table__cell--non-numeric">No</th>
+                    <th class="mdl-data-table__cell--non-numeric">Klinik</th>
+                    <th class="mdl-data-table__cell--non-numeric">Jumlah</th>
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr ng-repeat="uang in labels">
+                    <td class="mdl-data-table__cell--non-numeric">{{$index+1}}</td>
+                    <td class="mdl-data-table__cell--non-numeric">Klinik {{uang}}</td>
+                    <td class="mdl-data-table__cell--non-numeric" style="text-overflow: ellipsis;white-space: nowrap;overflow:hidden;">
+                      {{data4[0][$index] | currency:"Rp.":0}}
+                    </td>
+                  </tr>
+                   <tr>
+                    <td class="mdl-data-table__cell--non-numeric"></td>
+                    <td class="mdl-data-table__cell--non-numeric" style="font-weight: bold;">Total</td>
+                    <td class="mdl-data-table__cell--non-numeric" style="text-overflow: ellipsis;white-space: nowrap;overflow:hidden;    font-weight: bold;">
+                      {{gettotalpendapatan() | currency:"Rp.":0}}
+                    </td>
+                  </tr>
+                </tbody>
+                </table>
+          </div>   
+
+          <div class="demo-graphs  mdl-color--white mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet" style="border: 1px solid #e1e8ed;" id="line1">
+           <h5>Grafik pendapatan
+           </h5> 
+            <canvas class="chart chart-line" chart-data="uangbulan"
+            chart-labels="labels3" chart-legend="false" >
+          </canvas>
+
+          </div>   
+
+</div>

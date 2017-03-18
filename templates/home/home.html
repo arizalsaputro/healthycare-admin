@@ -1,0 +1,119 @@
+<div class="mdl-grid demo-content" ng-init="changejud('Analytics')">
+          <div class="demo-charts mdl-color--white mdl-cell mdl-cell--12-col mdl-grid" style="border: 1px solid #e1e8ed;">
+             <div class="list mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet"  >
+              <a class="item item-thumbnail-left" style="background-color:#FA7975;color: #fff;">
+                <img  ng-src="img/klinik.png">
+                <h2 style="margin: 8px 0 9px 0;
+    font-size: 42px;
+    font-weight: normal;">{{listofKlinik.length}}</h2>
+                <p style="margin-top: -14px;color:#fff;">Jumlah klinik </p>
+              </a>
+            </div>
+
+              <div class="list mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet"  >
+              <a class="item item-thumbnail-left" style="background-color:#F1B428;color: #fff;">
+                <img  ng-src="img/doctor-flat.png">
+                <h2 style="margin: 8px 0 9px 0;
+    font-size: 42px;
+    font-weight: normal;">{{listofDokter.length}}</h2>
+                <p style="margin-top: -14px;color:#fff;">Jumlah dokter </p>
+              </a>
+            </div>
+
+             <div class="list mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet"  >
+              <a class="item item-thumbnail-left" style="background-color:#2174FC;color: #fff;">
+                <img  ng-src="img/person-flat.png">
+                <h2 style="margin: 8px 0 9px 0;
+    font-size: 42px;
+    font-weight: normal;">{{allUser.length}}</h2>
+                <p style="margin-top: -14px;color:#fff;">Jumlah pasien</p>
+              </a>
+            </div>
+
+
+             <div class="list mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet"  >
+              <a class="item item-thumbnail-left" style="background-color:#57D3A1;color: #fff;">
+                <img  ng-src="img/shield-flat.png">
+                <h2 style="margin: 8px 0 9px 0;
+    font-size: 42px;
+    font-weight: normal;">{{listAsuransi.length}}</h2>
+                <p style="margin-top: -14px;color:#fff;">Jumlah Asuransi</p>
+              </a>
+            </div>
+
+             <div class="list mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet"  >
+              <a class="item item-thumbnail-left" style="background-color:#1E4763;color: #fff;">
+                <img  ng-src="img/pegawai.png">
+                <h2 style="margin: 8px 0 9px 0;
+    font-size: 42px;
+    font-weight: normal;">{{listPegawai.length}}</h2>
+                <p style="margin-top: -14px;color:#fff;">Jumlah Pegawai</p>
+              </a>
+            </div>
+
+            <div class="list mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet"  >
+              <a class="item item-thumbnail-left" style="background-color:#28C7CE;color: #fff;">
+                <img  ng-src="img/report.png">
+                <h2 style="margin: 8px 0 9px 0;
+    font-size: 42px;
+    font-weight: normal;">{{listLaporan.length}}</h2>
+                <p style="margin-top: -14px;color:#fff;">Jumlah Laporan</p>
+              </a>
+            </div>
+
+   
+
+          </div>
+
+          
+           <div class="demo-graphs  mdl-color--white mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet" style="border: 1px solid #e1e8ed;" id="line1">
+           <h5>Pendaftaran Periksa
+           </h5> 
+            <canvas class="chart chart-line" chart-data="lineregis"
+            chart-labels="labels3" chart-legend="false" >
+          </canvas>
+
+          </div>
+
+            <div class="demo-graphs  mdl-color--white mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet" style="border: 1px solid #e1e8ed;">
+           <h5>Pasien Hadir</h5>
+    
+            <canvas id="line" class="chart chart-line" chart-data="linehadir"
+            chart-labels="labels3" chart-legend="false" >
+          </canvas> 
+
+          </div>
+
+             <div class="demo-graphs  mdl-color--white mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet" style="border: 1px solid #e1e8ed;">
+           <h5>Pasien Tidak Hadir</h5>
+    
+            <canvas id="line" class="chart chart-line" chart-data="tidakhadir"
+            chart-labels="labels3" chart-legend="false" >
+          </canvas> 
+
+          </div>
+
+
+              <div class="demo-graphs mdl-color--white mdl-cell mdl-cell--6-col" style="border: 1px solid #e1e8ed;">
+           <h5>Gender Pegawai</h5>
+           <canvas id="bar2" class="chart chart-bar"
+            chart-data="datapeg" chart-labels="labels2"  >
+          </canvas>
+          </div>
+
+           <div class="demo-graphs mdl-color--white mdl-cell mdl-cell--6-col" style="border: 1px solid #e1e8ed;">
+           <h5>Gender Pasien</h5>
+           <canvas id="bar2" class="chart chart-bar"
+            chart-data="datapas" chart-labels="labels2"  >
+          </canvas>
+          </div>
+          
+             <div class="demo-graphs mdl-color--white mdl-cell mdl-cell--6-col" style="border: 1px solid #e1e8ed;">
+           <h5>Gender Dokter</h5>
+           <canvas id="bar2" class="chart chart-bar"
+            chart-data="datadok" chart-labels="labels2"  >
+          </canvas>
+          </div>
+          
+
+        </div>

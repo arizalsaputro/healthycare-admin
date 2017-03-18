@@ -1,0 +1,87 @@
+<dialog id="editasuransi" class="mdl-dialog newnewmodal" >
+     <div class="no-internet" ng-show="gagallagi">
+            <p>{{pesangagal}}</p>
+      </div>
+     <button class="mdl-button mdl-js-button mdl-button--icon modal_button" ng-click="hideDialog('editasuransi')">
+      <i class="material-icons">close</i>
+    </button>
+     <div class="backdrop" ng-click="hideDialog('editasuransi')">
+    </div>
+    <div class="modal__modal" >
+     <h2 class="g-modal-title-h1 sc-truncate">Edit Asuransi</h2>
+
+     <div class="profileSettings__form">
+       <div class="sc-media">
+                    <div class="profileSettings__avatar sc-media-image">
+          <div class="editImage" style="width: 300px;">
+            <div class="editImage__select" style="position:relative;">
+             
+              <img ng-src="{{newItem.gambar}}"  ng-model="resultimage" file-preview="uploadgambar" ng-show="!resultimage">
+             <div class="cropArea">
+               <img-crop ng-show="resultimage" image="resultimage" result-image="newItem.gambar"></img-crop>
+            </div>
+              <div class="image__button">
+                  <div class="imageChooser">
+                    <div class="imageChooser__chooseButton sc-button2 sc-button-camera sc-button-medium">Pilih Gambar</div>
+                    <input id="output" class="imageChooser__fileInput sc-visuallyhidden" type="file" accept="image/jpeg,image/pjpeg,image/png" ng-model="uploadgambar" file-changed>
+                  </div>
+                </div>    
+            </div>
+        
+          </div>
+        </div>
+          <div class="profileSettings__baseFields sc-media-content">
+            <div class="profileSettings__cell m-fullWidth">
+                <div class="textfield messageOutside">
+                   <label>
+                    <span class="textfield__label g-required-label">Nama Asuransi</span>
+
+                      <div class="textfield__inputWrapper">
+                          <div class="mdl-textfield mdl-js-textfield m-fullWidth" >
+                            <input class="mdl-textfield__input" type="text" id="newkli"  ng-model="newItem.nama">
+                            <label class="mdl-textfield__label" for="newkli"></label>
+                          </div>
+                          
+                      </div>
+
+                  </label>
+      
+                </div>
+            </div>
+            <div class="profileSettings__cell m-fullWidth">
+                <div class="textfield messageOutside">
+                   <label>
+                    <span class="textfield__label g-required-label">Penyelenggara Asuransi</span>
+
+                      <div class="textfield__inputWrapper">
+                          <div class="mdl-textfield mdl-js-textfield m-fullWidth" >
+                            <input class="mdl-textfield__input" type="text" id="desc"  ng-model="newItem.penyelenggara">
+                            <label class="mdl-textfield__label" for="desc"></label>
+                          </div>
+                          
+                      </div>
+
+                  </label>
+      
+                </div>
+            </div>
+
+
+          </div>
+       </div>
+
+       <div class="profileSettings__formButtons sc-button-toolbar sc-border-light-top">
+          
+          <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="color:red;" ng-click="hideDialog('editasuransi')">
+             Batal
+          </button>
+           <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" ng-click="editasuransi(newItem)" ng-disabled="!newItem.nama || !newItem.penyelenggara">
+            <div ng-show="showspin" class="mdl-spinner mdl-js-spinner is-active" ></div><div ng-show="!showspin"> Edit Asuransi</div>
+          </button>
+       </div>
+
+     </div>
+
+    </div>
+
+</dialog>
